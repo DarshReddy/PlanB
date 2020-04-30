@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_date"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginLeft="@dimen/size_2"
+    android:layout_marginRight="@dimen/size_2"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    card_view:cardBackgroundColor="#fff"
+    card_view:cardCornerRadius="@dimen/size_5"
+    card_view:cardElevation="@dimen/size_2"
+    card_view:cardPreventCornerOverlap="true"
+    card_view:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/size_4">
+
+        <ImageView
+            android:id="@+id/image_date"
+            android:layout_width="@dimen/size_60"
+            android:layout_height="@dimen/size_60"
+            android:layout_gravity="center"
+            android:contentDescription="@string/date_user"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_account"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/name_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="28dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:hint="@string/name"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            card_view:layout_constraintStart_toEndOf="@+id/image_date"
+            card_view:layout_constraintTop_toTopOf="@+id/image_date" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/user_rating"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="12sp"
+            card_view:layout_constraintStart_toStartOf="@+id/name_date"
+            card_view:layout_constraintTop_toBottomOf="@+id/name_date" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            card_view:layout_constraintEnd_toEndOf="@+id/textView3"
+            card_view:layout_constraintHorizontal_bias="0.0"
+            card_view:layout_constraintStart_toStartOf="@+id/textView3"
+            card_view:layout_constraintTop_toTopOf="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/call_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/give_them_a_ring"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="12sp"
+            card_view:layout_constraintStart_toStartOf="@+id/ratingBar"
+            card_view:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+
+        <ImageButton
+            android:id="@+id/date_phone"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/phone"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_phone"
+            card_view:layout_constraintStart_toEndOf="@+id/call_date"
+            card_view:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

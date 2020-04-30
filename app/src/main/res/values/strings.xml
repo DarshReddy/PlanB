@@ -1,0 +1,95 @@
+<resources>
+    <string name="app_name">PlanB</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">+91XXXXXXXXXX</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_history">History</string>
+    <string name="menu_starred">Starred</string>
+    <string name="menu_account">About App</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_rating">Rating</string>
+    <string name="logout">Logout</string>
+    <string name="current_location">Current Location</string>
+    <string name="plan">Plan</string>
+    <string name="budget">Budget?</string>
+
+    <string name="action_login">Login</string>
+
+    <string name="pls_wait">Please Wait...</string>
+    <string name="see_all">See All</string>
+
+    <string name="price_for_two">Price for 2: ₹ %1$s</string>
+
+    <string name="review">Review</string>
+    <string name="photo">Photo</string>
+    <string name="been_here">Been Here</string>
+    <string name="share">Share</string>
+    <string name="rate_place">Rate this place</string>
+
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="three">3</string>
+    <string name="four">4</string>
+    <string name="five">5</string>
+
+    <string name="details">Details</string>
+    <string name="address">Address</string>
+
+    <string name="avg_cost_lbl">AVERAGE COST</string>
+    <string name="avg_cost">avg cost</string>
+
+    <string name="avg_cost_short"> ₹ %1$s for two people(approx.)</string>
+
+    <string name="bogo_offers">BOGO Offers</string>
+    <string name="user_experience">User Experience : %1$s</string>
+
+    <string name="coming_soon">Coming Soon…</string>
+    <string name="check_internet">Please check your internet connection!</string>
+
+    <string name="recommendation">Recommendations for you!</string>
+
+    <string name="try_search_better">Try search with better city name!</string>
+
+    <string name="city_hint">Search your city here…</string>
+    <string name="feasible_restaurants">Restaurants Nearby</string>
+    <string name="fetching">Fetching…</string>
+    <string name="featured_image">Featured Image</string>
+    <string name="restaurant_name">Restaurant Name</string>
+    <string name="some_address">Some address</string>
+    <string name="cost">Cost</string>
+    <string name="_3_9">3.9</string>
+    <string name="locality">locality</string>
+    <string name="name">name</string>
+    <string name="cuisines">Cuisines</string>
+    <string name="username">Instagram like username</string>
+    <string name="password">password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="already_have_an_account_nclick_to_login">Already have an Account?\nClick to Login</string>
+    <string name="login">Login</string>
+    <string name="don_t_have_an_account_nclick_to_register">Don\'t have an Account?\nClick to Register</string>
+    <string name="people_visiting_same_restaurant_now">People visiting same Restaurant now</string>
+    <string name="select_gender">Select Gender:</string>
+    <string name="date_user">Date User</string>
+    <string name="user_rating">User Rating:</string>
+    <string name="communicate">Communicate</string>
+    <string name="dates">Dates</string>
+    <string name="date_ask">You have to wait till someone asks you out ;)</string>
+    <string name="not_rated">Not Rated</string>
+    <string name="places_you_have_visited_already">Places you have visited already!</string>
+    <string name="profile">Profile</string>
+    <string name="how_much_can_you_spend_today_for_food">How much can you spend today for food?</string>
+    <string name="how_was_your_date_nrate_it_on_scale_of_5">How was your date?\nRate it on scale of 5</string>
+    <string name="awesome_i_love_it">Awesome.I loved it</string>
+    <string name="submit">Submit</string>
+    <string name="user">username</string>
+    <string name="phone">phone</string>
+    <string name="planb_app_2020_nby_darsh_reddy_nif_you_like_the_app_please_share_it_nto_your_friends_and_acquaintances">PlanB app 2020\nBy Darsh Reddy\nIf you like the app please share it\nto your friends and acquaintances… :)</string>
+    <string name="emptyhistory">You have\'t visited any restaurants through this app yet!</string>
+    <string name="give_them_a_ring">Phone :</string>
+    <string name="share_this_app">Share this app!</string>
+</resources>

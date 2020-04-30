@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.app.kagada.planb.ui.home.HomeFragment"
+        tools:layout="@layout/fragment_home"
+        android:label="@string/menu_home"/>
+
+    <fragment
+        android:id="@+id/nav_history"
+        android:name="com.app.kagada.planb.ui.history.HistoryFragment"
+        android:label="@string/menu_history"
+        tools:layout="@layout/fragment_history" />
+
+    <fragment
+        android:id="@+id/nav_dates"
+        android:name="com.app.kagada.planb.ui.dates.DateFragment"
+        android:label="@string/dates"
+        tools:layout="@layout/fragment_dates" />
+
+    <fragment
+        android:id="@+id/nav_account"
+        android:name="com.app.kagada.planb.ui.account.AccountFragment"
+        android:label="@string/menu_account"
+        tools:layout="@layout/fragment_account" />
+
+    <fragment
+        android:id="@+id/nav_share"
+        android:name="com.app.kagada.planb.ui.share.ShareFragment"
+        android:label="@string/menu_share"
+        tools:layout="@layout/fragment_share" />
+
+    <fragment
+        android:id="@+id/nav_rating"
+        android:name="com.app.kagada.planb.ui.rating.RatingFragment"
+        android:label="@string/menu_rating"
+        tools:layout="@layout/fragment_rating" />
+
+    <fragment
+        android:id="@+id/nav_plan"
+        android:label="Plan"
+        android:name="com.app.kagada.planb.ui.plan.PlanFragment"
+        tools:layout="@layout/fragment_plan" />
+
+</navigation>

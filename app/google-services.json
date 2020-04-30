@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1077707666760",
+    "firebase_url": "https://planbdatz.firebaseio.com",
+    "project_id": "planbdatz",
+    "storage_bucket": "planbdatz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1077707666760:android:590ab88c682d4482da2f7d",
+        "android_client_info": {
+          "package_name": "com.app.kagada.planb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1077707666760-32pfsap43u09piv86fmh2hmvptck7d4a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCupJyYK5wvWGr2Cvxu42ibtMeMggAVXQc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1077707666760-32pfsap43u09piv86fmh2hmvptck7d4a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
