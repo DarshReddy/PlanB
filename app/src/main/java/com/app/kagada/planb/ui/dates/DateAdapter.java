@@ -1,6 +1,5 @@
 package com.app.kagada.planb.ui.dates;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -12,7 +11,6 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.kagada.planb.R;
@@ -25,12 +23,13 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.ViewHolder> {
     private List<DateResponse.Date> dateList;
     private DateClick dateClick;
     private View v;
-    private boolean is_female;
+    private boolean is_female,is_phone;
 
-    public DateAdapter(List<DateResponse.Date> dateList, DateClick dateClick, boolean is_female) {
+    public DateAdapter(List<DateResponse.Date> dateList, DateClick dateClick, boolean is_female, boolean is_phone) {
         this.dateList = dateList;
         this.dateClick = dateClick;
         this.is_female = is_female;
+        this.is_phone = is_phone;
     }
 
     public interface DateClick {
@@ -60,14 +59,21 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.ViewHolder> {
             else
                 holder.mImage.setImageResource(R.drawable.ic_account);
             holder.mRating.setRating(item.getMale().getAvgRating());
-            holder.mPhone.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(Intent.ACTION_DIAL);
-                    intent.setData(Uri.parse("tel:"+item.getMale().getPhone()));
-                    v.getContext().startActivity(intent);
-                }
-            });
+            if (is_phone) {
+                holder.mPhone.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(Intent.ACTION_DIAL);
+                        intent.setData(Uri.parse("tel:"+item.getMale().getPhone()));
+                        v.getContext().startActivity(intent);
+                    }
+                });
+            }
+            else
+            {
+                holder.mPhone.setVisibility(View.GONE);
+                holder.phoneText.setVisibility(View.GONE);
+            }
         } else {
             holder.mName.setText(item.getFemale().getEmail());
             if(!item.getFemale().getImgUrl().equals("")) {
@@ -80,14 +86,20 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.ViewHolder> {
             else
                 holder.mImage.setImageResource(R.drawable.ic_account);
             holder.mRating.setRating(item.getFemale().getAvgRating());
-            holder.mPhone.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(Intent.ACTION_DIAL);
-                    intent.setData(Uri.parse("tel:"+item.getFemale().getPhone()));
-                    v.getContext().startActivity(intent);
-                }
-            });
+            if(is_phone)  {
+                holder.mPhone.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(Intent.ACTION_DIAL);
+                        intent.setData(Uri.parse("tel:"+item.getFemale().getPhone()));
+                        v.getContext().startActivity(intent);
+                    }
+                });
+            }
+            else {
+                holder.mPhone.setVisibility(View.GONE);
+                holder.phoneText.setVisibility(View.GONE);
+            }
         }
     }
 
@@ -96,20 +108,21 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.ViewHolder> {
         return dateList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView mName;
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        TextView mName, phoneText;
         RatingBar mRating;
         DateClick dateClick;
         ImageView mImage;
         ImageButton mPhone;
 
-        public ViewHolder(@NonNull View itemView, DateClick dateClick) {
+        ViewHolder(@NonNull View itemView, DateClick dateClick) {
             super(itemView);
             this.dateClick = dateClick;
             mName = itemView.findViewById(R.id.name_date);
             mImage = itemView.findViewById(R.id.image_date);
             mRating = itemView.findViewById(R.id.ratingBar);
             mPhone = itemView.findViewById(R.id.date_phone);
+            phoneText = itemView.findViewById(R.id.call_date);
             itemView.setOnClickListener(this);
 
         }

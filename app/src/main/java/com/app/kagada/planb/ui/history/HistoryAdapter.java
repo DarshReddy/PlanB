@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.kagada.planb.R;
 import com.app.kagada.planb.networks.MyVisitsResponse;
-import com.app.kagada.planb.ui.plan.PlanAdapter;
 import com.bumptech.glide.Glide;
 
 import java.util.List;

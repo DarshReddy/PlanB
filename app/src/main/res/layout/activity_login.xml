@@ -36,10 +36,10 @@
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:autofillHints="@string/user"
+            android:autofillHints="@string/username"
             android:drawableStart="@drawable/ic_email"
             android:drawablePadding="5dp"
-            android:hint="@string/user"
+            android:hint="@string/username"
             android:textColor="@color/colorPrimaryDark"
             android:textColorHint="@color/quantum_grey"
             android:inputType="textEmailAddress" />

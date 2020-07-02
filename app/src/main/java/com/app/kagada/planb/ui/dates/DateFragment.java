@@ -6,11 +6,12 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,13 +22,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.kagada.planb.R;
-import com.app.kagada.planb.activities.MainActivity;
 import com.app.kagada.planb.networks.APIClient;
 import com.app.kagada.planb.networks.APIInterface;
 import com.app.kagada.planb.networks.AlarmReceiver;
 import com.app.kagada.planb.networks.DateAcceptResponse;
 import com.app.kagada.planb.networks.DateResponse;
-import com.app.kagada.planb.networks.MyNotificationManager;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -36,7 +35,6 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -81,7 +79,7 @@ public class DateFragment extends Fragment implements DateAdapter.DateClick {
             assert src != null;
             dateList.addAll(src.getDates());
             is_female= dateList.get(0).getGirl() == null;
-            mAdapter = new DateAdapter(dateList, DateFragment.this, is_female);
+            mAdapter = new DateAdapter(dateList, DateFragment.this, is_female, false);
             mDates.setAdapter(mAdapter);
             mProgress.setVisibility(View.GONE);
             mFetch.setVisibility(View.GONE);
@@ -90,6 +88,7 @@ public class DateFragment extends Fragment implements DateAdapter.DateClick {
             mProgress.setVisibility(View.GONE);
             mFetch.setTextSize(24);
             mFetch.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            mFetch.setGravity(Gravity.CENTER_VERTICAL);
             mFetch.setText(R.string.date_ask);
           }
         }
@@ -113,7 +112,7 @@ public class DateFragment extends Fragment implements DateAdapter.DateClick {
           callNotify(date.getId());
           dateList.clear();
           dateList.add(date);
-          mAdapter = new DateAdapter(dateList, DateFragment.this, is_female);
+          mAdapter = new DateAdapter(dateList, DateFragment.this, is_female, true);
           mDates.setAdapter(mAdapter);
           mProgress.setVisibility(View.GONE);
           mFetch.setVisibility(View.GONE);
@@ -132,32 +131,41 @@ public class DateFragment extends Fragment implements DateAdapter.DateClick {
   public void onDateClick(final int position) {
     final int dateID = dateList.get(position).getId();
 
-    apiInterface.acceptDate(String.valueOf(dateID)).enqueue(new Callback<DateAcceptResponse>() {
-      @Override
-      public void onResponse(Call<DateAcceptResponse> call, Response<DateAcceptResponse> response) {
-        if (response.code()==200) {
-          AlertDialog.Builder bd = new AlertDialog.Builder(getActivity());
-          bd.setTitle(response.body().getMessage());
-          if (is_female)
-            bd.setMessage("You accepted to meet "+dateList.get(position).getMale().getEmail().split("@")[0]);
-          else bd.setMessage("You accepted to meet "+dateList.get(position).getFemale().getEmail().split("@")[0]);
-          bd.setPositiveButton("Cool!",
-                  new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+    AlertDialog.Builder bd = new AlertDialog.Builder(getActivity());
+    bd.setTitle("Match Date!");
+    if (is_female)
+      bd.setMessage("Accept to meet "+dateList.get(position).getMale().getEmail() + "?");
+    else bd.setMessage("Accept to meet "+dateList.get(position).getFemale().getEmail() + "?");
+    bd.setPositiveButton("Cool!",
+            new DialogInterface.OnClickListener() {
+              @Override
+              public void onClick(final DialogInterface dialog, int which) {
+                apiInterface.acceptDate(String.valueOf(dateID)).enqueue(new Callback<DateAcceptResponse>() {
+                  @Override
+                  public void onResponse(@NotNull Call<DateAcceptResponse> call, @NotNull Response<DateAcceptResponse> response) {
+                    if (response.code()==200) {
                       dialog.dismiss();
                       callNotify(dateID);
                     }
-                  });
-          bd.show();
-        }
-      }
+                  }
 
+                  @Override
+                  public void onFailure(@NotNull Call<DateAcceptResponse> call, @NotNull Throwable t) {
+                    Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                    call.cancel(); }
+                });
+              }
+            });
+    bd.setNegativeButton("No..", new DialogInterface.OnClickListener() {
       @Override
-      public void onFailure(Call<DateAcceptResponse> call, Throwable t) {
-        Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
-        call.cancel(); }
+      public void onClick(DialogInterface dialog, int which) {
+        dialog.dismiss();
+      }
     });
+    AlertDialog dialog = bd.create();
+    dialog.show();
+    Button btn = dialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+    btn.setGravity(Gravity.CENTER);
   }
 
   private void callNotify(int dateID) {

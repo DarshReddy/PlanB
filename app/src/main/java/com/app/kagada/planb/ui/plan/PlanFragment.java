@@ -19,6 +19,8 @@ import com.app.kagada.planb.networks.RestaurantResponse;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -77,6 +79,13 @@ public class PlanFragment extends Fragment implements PlanAdapter.OnRstClicked {
                       if (resource.getNearbyRestaurants().get(i).getAvgCost() <= budget)
                           mRestaurants.add(resource.getNearbyRestaurants().get(i));
                   }
+                  Collections.sort(mRestaurants, new Comparator<RestaurantResponse.NearbyRestaurant>() {
+                      @Override
+                      public int compare(RestaurantResponse.NearbyRestaurant o1, RestaurantResponse.NearbyRestaurant o2) {
+                          return o1.getAvgCost().compareTo(o2.getAvgCost());
+                      }
+                  });
+                  Collections.reverse(mRestaurants);
                   Toast.makeText(getActivity(), "Found "+mRestaurants.size() + " matching restaurants nearby!", Toast.LENGTH_SHORT).show();
                   mAdapter = new PlanAdapter(mRestaurants, PlanFragment.this);
                   mRstList.setAdapter(mAdapter);
@@ -111,7 +120,6 @@ public class PlanFragment extends Fragment implements PlanAdapter.OnRstClicked {
                   Intent intent = new Intent(getContext(), MainActivity.class);
                   intent.putExtra("call_frag",2);
                   intent.putExtra("resID",mRestaurants.get(position).getResID());
-
                   startActivity(intent);
               }
           }

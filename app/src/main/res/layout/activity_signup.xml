@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/textView4"
@@ -18,30 +18,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
+
+    <ImageView
         android:id="@+id/profile_img"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/quantum_bluegrey100"
         android:contentDescription="@string/profile"
         android:scaleType="fitCenter"
         android:src="@drawable/ic_account"
-        app:layout_constraintBottom_toTopOf="@+id/sign_form"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.372" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <Button
+        android:id="@+id/button_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableEnd="@drawable/ic_upload"
+        android:text="@string/upload_image"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/profile_img"
+        app:layout_constraintStart_toStartOf="@+id/profile_img"
+        app:layout_constraintTop_toBottomOf="@+id/profile_img" />
 
     <LinearLayout
         android:id="@+id/sign_form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginTop="196dp"
+        android:layout_marginTop="12dp"
         android:orientation="vertical"
         android:padding="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/button_img">
 
         <EditText
             android:id="@+id/editTextEmail"
@@ -51,9 +63,9 @@
             android:drawableStart="@drawable/ic_email"
             android:drawablePadding="5dp"
             android:hint="@string/username"
+            android:inputType="textEmailAddress"
             android:textColor="@color/colorPrimaryDark"
-            android:textColorHint="@color/quantum_grey"
-            android:inputType="textEmailAddress" />
+            android:textColorHint="@color/quantum_grey" />
 
         <EditText
             android:id="@+id/editTextPassword"
@@ -63,26 +75,28 @@
             android:drawableStart="@drawable/ic_password"
             android:drawablePadding="5dp"
             android:hint="@string/password"
+            android:inputType="textPassword"
             android:textColor="@color/colorPrimaryDark"
-            android:textColorHint="@color/quantum_grey"
-            android:inputType="textPassword" />
+            android:textColorHint="@color/quantum_grey" />
 
         <EditText
             android:id="@+id/user_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints="@string/phone"
-            android:textColor="@color/colorPrimaryDark"
-            android:textColorHint="@color/quantum_grey"
             android:drawableStart="@drawable/ic_phone"
             android:hint="@string/phone"
-            android:inputType="phone" />
+            android:drawablePadding="5dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textColorHint="@color/quantum_grey" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/select_gender"
-            android:textColor="@color/colorPrimaryDark"/>
+            android:textSize="14sp"
+            android:textColor="@color/colorPrimaryDark" />
+
         <Spinner
             android:id="@+id/spinner"
             android:layout_width="wrap_content"
@@ -96,7 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/sign_form"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:lineSpacingExtra="7dp"
         android:text="@string/already_have_an_account_nclick_to_login"
         android:textAlignment="center"
@@ -110,7 +124,7 @@
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:text="@string/sign_up"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"

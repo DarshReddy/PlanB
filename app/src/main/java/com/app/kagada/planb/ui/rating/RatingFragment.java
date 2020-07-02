@@ -25,7 +25,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RatingFragment extends Fragment {
-  private RatingBar mRatingBar;
   private TextView mRatingScale;
   private Button rateBtn;
   private int stars=1;
@@ -34,7 +33,7 @@ public class RatingFragment extends Fragment {
   public View onCreateView(@NonNull LayoutInflater inflater,
                            ViewGroup container, Bundle savedInstanceState) {
     View root = inflater.inflate(R.layout.fragment_rating, container, false);
-    mRatingBar = root.findViewById(R.id.rate_now);
+    RatingBar mRatingBar = root.findViewById(R.id.rate_now);
     mRatingScale = root.findViewById(R.id.RatingScale);
     rateBtn = root.findViewById(R.id.rate_btn);
     mRatingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
